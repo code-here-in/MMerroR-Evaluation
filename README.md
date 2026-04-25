@@ -1,9 +1,9 @@
 # [ACL 2026] MMErroR: A Benchmark for Erroneous Reasoning in Vision-Language Models
 
 <div align="center">
-  <a href="https://mmerror-benchmark.github.io/"><img src="https://img.shields.io/badge/Project-Page-2F6FEB?style=flat-square&labelColor=4B4B4B" alt="Project Page" /></a>
-  <a href="https://arxiv.org/abs/2601.03331"><img src="https://img.shields.io/badge/arXiv-2601.03331-B31B1B?style=flat-square&labelColor=4B4B4B" alt="arXiv 2601.03331" /></a>
-  <a href="https://huggingface.co/datasets/s-u-do/mmerror-benchmark"><img src="https://img.shields.io/badge/Dataset-HuggingFace-F59E0B?style=flat-square&labelColor=4B4B4B" alt="Dataset HuggingFace" /></a>
+  <a href="https://mmerror-benchmark.github.io/"><img src="https://img.shields.io/badge/Project-Page-2b7de9" alt="Project Page" /></a>
+  <a href="https://arxiv.org/abs/2601.03331"><img src="https://img.shields.io/badge/arXiv-2601.03331-b31b1b.svg" alt="arXiv 2601.03331" /></a>
+  <a href="https://huggingface.co/datasets/s-u-do/mmerror-benchmark"><img src="https://img.shields.io/badge/Dataset-HuggingFace-f59e0b" alt="Dataset HuggingFace" /></a>
 </div>
 
 This repository contains the runnable evaluation scripts for the MMErroR benchmark. It is the maintained, config-driven evaluation bundle for the two benchmark tasks:
