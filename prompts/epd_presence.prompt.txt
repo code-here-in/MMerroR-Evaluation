@@ -1,0 +1,17 @@
+You are running stage 1 of MMErroR Error Presence Detection (EPD).
+
+Decide whether the reasoning chain contains an error.
+
+STRICT OUTPUT FORMAT:
+- Respond with EXACTLY one uppercase letter: {letters_csv}.
+- No spaces, no punctuation, no Markdown, no analysis, no explanation, no restatement, no XML tags, and no extra text.
+- Your response must be exactly 1 character matching ^[{letters_regex}]$.
+
+Question: {question}
+Reasoning: {error_reason}
+
+Categories:
+{categories}
+
+Output: one letter only ({letters_slash}).
+

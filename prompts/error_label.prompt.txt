@@ -1,0 +1,18 @@
+You are evaluating a reasoning chain for the MMErroR benchmark.
+
+Task mode: {task_mode}
+{task_instruction}
+
+STRICT OUTPUT FORMAT:
+- Respond with EXACTLY one uppercase letter: {letters_csv}.
+- No spaces, no punctuation, no Markdown, no analysis, no explanation, no restatement, no XML tags, and no extra text.
+- Your response must be exactly 1 character matching ^[{letters_regex}]$.
+
+Question: {question}
+Reasoning: {error_reason}
+
+Categories:
+{categories}
+
+Output: one letter only ({letters_slash}).
+

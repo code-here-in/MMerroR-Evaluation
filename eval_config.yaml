@@ -1,0 +1,51 @@
+project:
+  name: mmerror-epd
+  description: Publish-ready MMErroR evaluation config inspired by promptfoo's config-first workflow.
+
+dataset:
+  json_dir: ../data/jsons
+  image_dir: ../data/images
+  limit: -1
+
+evaluation:
+  task_mode: epd
+  output_dir: ../result
+  concurrency: 8
+  max_retries: 5
+  request_interval_sec: 0.0
+  timeout_sec: 600
+  temperature: 0.0
+  max_completion_tokens: 2048
+  use_max_completion_tokens: true
+  resume: true
+
+prompt:
+  file: prompts/error_label.prompt.txt
+  epd_presence_file: prompts/epd_presence.prompt.txt
+  epd_type_file: prompts/epd_type.prompt.txt
+
+provider_defaults:
+  type: openai_compatible
+  api_base: https://api.openai.com/v1/chat/completions
+  api_base_env: MMERROR_API_BASE
+  api_key_env: MMERROR_API_KEY
+  img_detail: high
+  mode: off
+  mode_api: auto
+  thinking_budget_tokens: -1
+  include_thoughts: false
+  extra_body: {}
+
+models:
+  - name: gpt-5.2
+    enabled: true
+    mode: xhigh
+    mode_api: openai
+  - name: claude-opus-4.5
+    enabled: false
+    mode: thinking
+    mode_api: anthropic
+  - name: gemini-3-pro-preview
+    enabled: false
+    mode: high
+    mode_api: gemini

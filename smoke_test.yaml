@@ -1,0 +1,33 @@
+project:
+  name: mmerror-smoke-test
+  description: Local smoke test that verifies the pipeline without calling any API.
+
+dataset:
+  json_dir: ../data/jsons
+  image_dir: ../data/images
+  limit: 5
+
+evaluation:
+  task_mode: epd
+  output_dir: ../result
+  concurrency: 2
+  max_retries: 0
+  request_interval_sec: 0.0
+  timeout_sec: 30
+  temperature: 0.0
+  max_completion_tokens: 32
+  use_max_completion_tokens: false
+  resume: false
+
+prompt:
+  file: prompts/error_label.prompt.txt
+  epd_presence_file: prompts/epd_presence.prompt.txt
+  epd_type_file: prompts/epd_type.prompt.txt
+
+provider_defaults:
+  type: mock
+
+models:
+  - name: mock-gold
+    enabled: true
+    strategy: gold_label
