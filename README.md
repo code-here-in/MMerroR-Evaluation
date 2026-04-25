@@ -13,7 +13,7 @@ This repository contains the runnable evaluation scripts for the MMErroR benchma
 MMErroR evaluates whether vision-language models can identify erroneous reasoning, rather than only produce correct answers. In `ETC`, the model is told that an error exists and must classify its type. In `EPD`, the model must first decide whether an error is present and only then diagnose the type if needed.
 
 <div align="center">
-  <img src="figure/intro.png" alt="MMErroR motivation overview" width="100%" />
+  <img src="figure/intro.png" alt="MMErroR motivation overview" width="82%" />
 </div>
 
 ## Repository Contents
