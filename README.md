@@ -1,27 +1,6 @@
 # [ACL 2026] MMErroR: A Benchmark for Erroneous Reasoning in Vision-Language Models
 
 <p align="center">
-  Yang Shi<sup>1*</sup>, Yifeng Xie<sup>2*</sup>, Minzhe Guo<sup>1</sup>, Liangsi Lu<sup>1</sup>, Mingxuan Huang<sup>3</sup>,<br>
-  Jingchao Wang<sup>4</sup>, Zhihong Zhu<sup>4</sup>, Boyan Xu<sup>1†</sup>, Zhiqi Huang<sup>4</sup>
-</p>
-
-<p align="center">
-  <sup>1</sup>Guangdong University of Technology
-  <br />
-  <sup>2</sup>Hong Kong Baptist University
-  <br />
-  <sup>3</sup>Sun Yat-sen University
-  <br />
-  <sup>4</sup>Peking University
-</p>
-
-<p align="center">
-  <sup>*</sup>Equal contribution
-  <br />
-  <sup>†</sup>Corresponding author
-</p>
-
-<p align="center">
   <a href="https://mmerror-benchmark.github.io/">
     <img src="https://img.shields.io/badge/Project-Page-2F6FEB?style=flat-square&labelColor=4B4B4B" alt="Project Page" />
   </a>
@@ -92,7 +71,6 @@ In that case, pass those exact folders with `--data-dir` and `--image-dir`.
 Example download with `huggingface_hub`:
 
 ```powershell
-python -m pip install -U huggingface_hub
 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='s-u-do/mmerror-benchmark', repo_type='dataset', local_dir='../mmerror-benchmark')"
 ```
 
