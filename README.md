@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>[ACL 2026] <img src="figure/logo.png" alt="MMErroR logo" width="54" /> MMErroR: A Benchmark for Erroneous Reasoning in Vision-Language Models</h1>
+  <h1>[ACL 2026] <img src="figure/logo.png" alt="MMErroR logo" width="28" /> MMErroR: A Benchmark for Erroneous Reasoning in Vision-Language Models</h1>
   <a href="https://mmerror-benchmark.github.io/"><img src="https://img.shields.io/badge/Project-Page-2b7de9" alt="Project Page" /></a>
   <a href="https://arxiv.org/abs/2601.03331"><img src="https://img.shields.io/badge/arXiv-2601.03331-b31b1b.svg" alt="arXiv 2601.03331" /></a>
   <a href="https://huggingface.co/datasets/s-u-do/mmerror-benchmark"><img src="https://img.shields.io/badge/Dataset-HuggingFace-f59e0b" alt="Dataset HuggingFace" /></a>
