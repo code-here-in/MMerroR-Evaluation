@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 
-# -------- API wrapper (mirrors the one in test_error_label_prediction_enhanced.py) -------- #
+# -------- API wrapper (mirrors the current config-driven evaluator behavior) -------- #
 class OpenAIWrapper:
     def __init__(self, model, api_base, key, img_detail="high", timeout=300, temperature=0, use_max_tokens=False, max_tokens=256):
         self.model = model
@@ -349,7 +349,7 @@ def main():
     if not data_dir.exists():
         raise SystemExit(f"Data directory {data_dir} does not exist.")
 
-    # Infer image directory (same logic as test_error_label_prediction_enhanced.py)
+    # Infer image directory using the same jsons/images convention as the main evaluator.
     if str(data_dir).endswith("jsons"):
         image_dir = Path(str(data_dir).replace("jsons", "images"))
     else:

@@ -1,0 +1,9 @@
+{
+  "question_id": "MMErroR_00002",
+  "question": "Is the explanation correct?",
+  "correct_answer": "yes",
+  "error_reason": "The reasoning correctly concludes there is no error.",
+  "label": "E_NoError",
+  "domain": "smoke",
+  "subdomain": "noerror"
+}

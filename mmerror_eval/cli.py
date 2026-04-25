@@ -4,7 +4,7 @@ import argparse
 from pathlib import Path
 from typing import List, Optional
 
-from .config import load_config
+from .config import AppConfig, load_config
 from .labels import normalize_task_mode
 from .runner import run_project
 
@@ -32,7 +32,7 @@ def build_parser(default_config_path: Path) -> argparse.ArgumentParser:
     return parser
 
 
-def _apply_overrides(config: any, args: argparse.Namespace) -> None:
+def _apply_overrides(config: AppConfig, args: argparse.Namespace) -> None:
     if args.limit is not None:
         config.dataset.limit = args.limit
     if args.data_dir is not None:

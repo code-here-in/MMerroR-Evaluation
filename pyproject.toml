@@ -4,15 +4,18 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mmerror-eval"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Config-driven MMErroR evaluation runner for error-type classification and error-presence detection."
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
   "PyYAML>=6.0",
   "tqdm>=4.66",
+  "huggingface_hub>=0.23",
 ]
 
 [project.scripts]
 mmerror-eval = "mmerror_eval.cli:main"
 
+[tool.setuptools.dynamic]
+version = {attr = "mmerror_eval._version.__version__"}

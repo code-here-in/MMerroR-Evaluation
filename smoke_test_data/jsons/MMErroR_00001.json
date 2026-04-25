@@ -1,0 +1,9 @@
+{
+  "question_id": "MMErroR_00001",
+  "question": "What number is shown on the sign?",
+  "correct_answer": "12",
+  "error_reason": "The reasoning says the sign shows 21, which is incorrect.",
+  "label": "B_Reasoning_Error",
+  "domain": "smoke",
+  "subdomain": "reasoning"
+}

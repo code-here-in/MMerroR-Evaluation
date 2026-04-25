@@ -3,8 +3,8 @@ project:
   description: Local smoke test that verifies the pipeline without calling any API.
 
 dataset:
-  json_dir: ../data/jsons
-  image_dir: ../data/images
+  json_dir: smoke_test_data/jsons
+  image_dir: smoke_test_data/images
   limit: 5
 
 evaluation:

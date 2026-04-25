@@ -140,9 +140,9 @@ class OpenAICompatibleProvider(BaseProvider):
         self.fail_message = "Failed to obtain answer via API."
 
         if not self.settings.api_key:
-            raise ValueError("API key is required. Set MMERROR_API_KEY or OPENAI_API_KEY.")
+            raise ValueError("API key is required. Set MMERROR_API_KEY (or OPENAI_API_KEY as a compatibility alias).")
         if not self.settings.api_base:
-            raise ValueError("API base is required. Set MMERROR_API_BASE or configure api_base.")
+            raise ValueError("API base is required. Set MMERROR_API_BASE (or OPENAI_API_BASE as a compatibility alias), or configure api_base.")
         if self.settings.img_detail not in ("low", "high", "auto"):
             raise ValueError("img_detail must be low, high, or auto.")
         if self.settings.mode not in MODE_CHOICES:

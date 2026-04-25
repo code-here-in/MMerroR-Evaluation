@@ -3,25 +3,37 @@ set -eu
 
 (set -o pipefail) >/dev/null 2>&1 && set -o pipefail
 
-API_BASE="${API_BASE:-${MMERROR_API_BASE:-}}"
-API_KEY="${API_KEY:-${MMERROR_API_KEY:-}}"
-DATA_DIR="${DATA_DIR:-../data/jsons}"
-IMAGE_DIR="${IMAGE_DIR:-../data/images}"
-OUTPUT_DIR="${OUTPUT_DIR:-../result}"
+CONFIG="${CONFIG:-eval_config.yaml}"
+API_BASE="${MMERROR_API_BASE:-${API_BASE:-}}"
+API_KEY="${MMERROR_API_KEY:-${API_KEY:-}}"
+DATA_DIR="${DATA_DIR:-}"
+IMAGE_DIR="${IMAGE_DIR:-}"
+OUTPUT_DIR="${OUTPUT_DIR:-}"
+MODELS="${MODELS:-}"
+TASKS="${TASKS:-}"
 
-if [ -z "${API_KEY}" ]; then
-    echo "[ERROR] API_KEY/MMERROR_API_KEY is empty."
-    echo "Example:"
-    echo "  API_BASE=\"https://your-endpoint/v1/chat/completions\" API_KEY=\"your-key\" sh main.sh"
-    exit 2
+set -- python auto_eval_all_models.py --config "${CONFIG}"
+
+if [ -n "${DATA_DIR}" ]; then
+    set -- "$@" --data-dir "${DATA_DIR}"
+fi
+if [ -n "${IMAGE_DIR}" ]; then
+    set -- "$@" --image-dir "${IMAGE_DIR}"
+fi
+if [ -n "${OUTPUT_DIR}" ]; then
+    set -- "$@" --output-dir "${OUTPUT_DIR}"
+fi
+if [ -n "${API_BASE}" ]; then
+    set -- "$@" --api-base "${API_BASE}"
+fi
+if [ -n "${API_KEY}" ]; then
+    set -- "$@" --key "${API_KEY}"
+fi
+if [ -n "${MODELS}" ]; then
+    set -- "$@" --models "${MODELS}"
+fi
+if [ -n "${TASKS}" ]; then
+    set -- "$@" --tasks "${TASKS}"
 fi
 
-python auto_eval_all_models.py \
-    --data-dir "${DATA_DIR}" \
-    --image-dir "${IMAGE_DIR}" \
-    --output-dir "${OUTPUT_DIR}" \
-    --api-base "${API_BASE}" \
-    --key "${API_KEY}" \
-    --models "gpt-5.2,claude-opus-4.5,gemini-3-pro-preview" \
-    --tasks "etc,epd"
-
+"$@"

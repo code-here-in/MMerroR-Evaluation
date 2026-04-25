@@ -21,15 +21,15 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--python", type=str, default=sys.executable)
     parser.add_argument("--runner", type=str, default="run.py")
     parser.add_argument("--config", type=str, default="eval_config.yaml")
-    parser.add_argument("--data-dir", type=str, default="../data/jsons")
-    parser.add_argument("--image-dir", type=str, default="../data/images")
-    parser.add_argument("--output-dir", type=str, default="../result")
-    parser.add_argument("--api-base", type=str, default=os.environ.get("API_BASE", os.environ.get("MMERROR_API_BASE", "")))
-    parser.add_argument("--key", type=str, default=os.environ.get("API_KEY", os.environ.get("MMERROR_API_KEY", "")))
+    parser.add_argument("--data-dir", type=str, default=None)
+    parser.add_argument("--image-dir", type=str, default=None)
+    parser.add_argument("--output-dir", type=str, default=None)
+    parser.add_argument("--api-base", type=str, default=os.environ.get("MMERROR_API_BASE", os.environ.get("API_BASE", "")))
+    parser.add_argument("--key", type=str, default=os.environ.get("MMERROR_API_KEY", os.environ.get("API_KEY", "")))
     parser.add_argument(
         "--models",
         type=str,
-        default="gpt-5.2,claude-opus-4.5,gemini-3-pro-preview",
+        default=None,
         help="Comma-separated model names. Only models present in the config will run.",
     )
     parser.add_argument("--tasks", type=str, default="etc,epd", help="Comma-separated task list, e.g. etc,epd")
@@ -67,9 +67,6 @@ def build_command(args: argparse.Namespace, task: str) -> list[str]:
     bundle_root = Path(__file__).resolve().parent
     runner_path = resolve_from_bundle_root(bundle_root, args.runner)
     config_path = resolve_from_bundle_root(bundle_root, args.config)
-    data_dir = resolve_from_bundle_root(bundle_root, args.data_dir)
-    image_dir = resolve_from_bundle_root(bundle_root, args.image_dir)
-    output_dir = resolve_from_bundle_root(bundle_root, args.output_dir)
 
     command = [
         args.python,
@@ -78,15 +75,18 @@ def build_command(args: argparse.Namespace, task: str) -> list[str]:
         str(config_path),
         "--task-mode",
         task,
-        "--models",
-        args.models,
-        "--data-dir",
-        str(data_dir),
-        "--image-dir",
-        str(image_dir),
-        "--output-dir",
-        str(output_dir),
     ]
+    if args.models:
+        command.extend(["--models", args.models])
+    if args.data_dir:
+        data_dir = resolve_from_bundle_root(bundle_root, args.data_dir)
+        command.extend(["--data-dir", str(data_dir)])
+    if args.image_dir:
+        image_dir = resolve_from_bundle_root(bundle_root, args.image_dir)
+        command.extend(["--image-dir", str(image_dir)])
+    if args.output_dir:
+        output_dir = resolve_from_bundle_root(bundle_root, args.output_dir)
+        command.extend(["--output-dir", str(output_dir)])
     if args.limit > 0:
         command.extend(["--limit", str(args.limit)])
     if args.env_file:
@@ -126,10 +126,10 @@ def main() -> int:
     print(f"runner: {runner_path}")
     print(f"config: {config_path}")
     print(f"tasks: {', '.join(task_list)}")
-    print(f"models: {args.models}")
-    print(f"data_dir: {args.data_dir}")
-    print(f"image_dir: {args.image_dir}")
-    print(f"output_dir: {args.output_dir}")
+    print(f"models: {args.models or '(from config)'}")
+    print(f"data_dir: {args.data_dir or '(from config)'}")
+    print(f"image_dir: {args.image_dir or '(from config)'}")
+    print(f"output_dir: {args.output_dir or '(from config)'}")
     print(f"api_base: {args.api_base or '(from env/.env)'}")
     print(f"key: {mask_secret(args.key)}" if args.key else "key: (from env/.env)")
     print("=" * 72)

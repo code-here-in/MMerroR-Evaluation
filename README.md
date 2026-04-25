@@ -26,6 +26,7 @@ MMErroR evaluates whether vision-language models can identify erroneous reasonin
 - `run.py`: primary CLI entrypoint
 - `eval_config.yaml`: default evaluation config
 - `smoke_test.yaml`: local smoke test config using a mock provider
+- `smoke_test_data/`: bundled minimal samples for the local smoke test
 - `auto_eval_all_models.py`: batch runner for multiple models and tasks
 - `main.sh`: shell wrapper for batch evaluation
 - `legacy/`: older evaluation scripts kept for reference
@@ -47,7 +48,7 @@ Default layout expected by the example commands below:
 
 ```text
 <parent-of-this-repo>/
-+-- MMerroR-Evaluation/
++-- MMerroR-Eval/
 `-- data/
     +-- jsons/
     |   +-- MMErroR_00001.json
@@ -118,7 +119,7 @@ Useful overrides:
 - `--limit`: evaluate only the first `N` samples
 - `--env-file`: load credentials from a specific `.env` file
 
-You can also run the packaged smoke test without any API calls:
+You can also run the packaged smoke test without any API calls or external dataset download:
 
 ```powershell
 python .\run.py --config .\smoke_test.yaml
@@ -138,16 +139,18 @@ python .\auto_eval_all_models.py ^
 Or with environment variables:
 
 ```powershell
-$env:API_BASE="https://your-endpoint/v1/chat/completions"
-$env:API_KEY="your-key"
+$env:MMERROR_API_BASE="https://your-endpoint/v1/chat/completions"
+$env:MMERROR_API_KEY="your-key"
 python .\auto_eval_all_models.py --data-dir ..\data\jsons --image-dir ..\data\images
 ```
 
 For shell environments:
 
 ```sh
-API_BASE="https://your-endpoint/v1/chat/completions" API_KEY="your-key" sh main.sh
+MMERROR_API_BASE="https://your-endpoint/v1/chat/completions" MMERROR_API_KEY="your-key" sh main.sh
 ```
+
+`API_BASE` / `API_KEY` are still accepted as compatibility aliases, but `MMERROR_API_BASE` / `MMERROR_API_KEY` are the canonical names.
 
 ## 5. Output Structure
 

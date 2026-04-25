@@ -1,16 +1,7 @@
-"""Legacy entrypoint for the publish-ready MMErroR evaluation bundle.
+"""Compatibility alias for older automation that still invokes this filename.
 
-This wrapper keeps the original filename usable while delegating execution to
-the refactored config-driven runner in ``mmerror_eval_release``.
+Prefer ``run.py`` or ``python -m mmerror_eval`` for new workflows.
 """
-
-from pathlib import Path
-import sys
-
-
-RELEASE_ROOT = Path(__file__).resolve().parent / "mmerror_eval_release"
-if str(RELEASE_ROOT) not in sys.path:
-    sys.path.insert(0, str(RELEASE_ROOT))
 
 from mmerror_eval.cli import main
 
