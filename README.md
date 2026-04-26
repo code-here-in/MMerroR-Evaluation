@@ -164,6 +164,18 @@ Use `--output-dir` to override the default result root.
 - The scripts under `legacy/` preserve older behavior and may require more explicit arguments.
 - This repository only provides the runnable evaluation code; it does not bundle the dataset itself.
 
+
+## Acknowledgments
+
+We thank the authors of the following benchmarks for making their datasets publicly available:
+
+- [MMMU](https://mmmu-benchmark.github.io/)
+- [MathVista](https://mathvista.github.io/)
+- [MathVerse](https://mathverse-cuhk.github.io/)
+- [ScienceQA](https://scienceqa.github.io/)
+- [AI2D](https://huggingface.co/datasets/lmms-lab/ai2d)
+
+
 ## Citation
 
 If you find MMErroR helpful, please cite:
